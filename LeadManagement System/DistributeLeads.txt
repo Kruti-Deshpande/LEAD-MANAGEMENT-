@@ -1,0 +1,11 @@
+function assignLeads() {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    var data = sheet.getDataRange().getValues();
+    var salesReps = ["Rep1", "Rep2", "Rep3"];
+    var repIndex = 0;
+  
+    for (var i = 1; i < data.length; i++) {
+      sheet.getRange(i + 1, 8).setValue(salesReps[repIndex]); // Assign in column I
+      repIndex = (repIndex + 1) % salesReps.length;
+    }
+  }
